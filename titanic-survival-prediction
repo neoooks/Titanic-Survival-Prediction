@@ -2,13 +2,13 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "1983d7da",
+   "id": "3cd4c89b",
    "metadata": {
     "papermill": {
-     "duration": 0.002617,
-     "end_time": "2025-01-30T17:05:19.053323",
+     "duration": 0.002326,
+     "end_time": "2025-01-31T15:53:07.419436",
      "exception": false,
-     "start_time": "2025-01-30T17:05:19.050706",
+     "start_time": "2025-01-31T15:53:07.417110",
      "status": "completed"
     },
     "tags": []
@@ -19,13 +19,13 @@
   },
   {
    "cell_type": "markdown",
-   "id": "a9e12a5d",
+   "id": "73dc983f",
    "metadata": {
     "papermill": {
-     "duration": 0.001482,
-     "end_time": "2025-01-30T17:05:19.057150",
+     "duration": 0.001488,
+     "end_time": "2025-01-31T15:53:07.423160",
      "exception": false,
-     "start_time": "2025-01-30T17:05:19.055668",
+     "start_time": "2025-01-31T15:53:07.421672",
      "status": "completed"
     },
     "tags": []
@@ -40,27 +40,117 @@
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "9fe34d96",
+   "cell_type": "markdown",
+   "id": "e1fd8e9a",
    "metadata": {
     "papermill": {
-     "duration": 0.001323,
-     "end_time": "2025-01-30T17:05:19.060210",
+     "duration": 0.001503,
+     "end_time": "2025-01-31T15:53:07.426399",
      "exception": false,
-     "start_time": "2025-01-30T17:05:19.058887",
+     "start_time": "2025-01-31T15:53:07.424896",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "> **Understanding the datasets**\n",
+    "\n",
+    "Data has been split into 2 groups:\n",
+    "- training set\n",
+    "- test set\n",
+    "\n",
+    "Training set is used to build the machine learning models. For the training set, we provide the outcome for each passenger. The model will be based on \"features\" like passengers' gender and class. Feature engineering can also be used to create new features.\n",
+    "\n",
+    "Test set is used to see how well the model performs on unseen data. For the test set, we do not provide the ground truth for each passenger. Task here would be to predict these outcomes. For each passenger in the test set, we will use the model trained to predict whether or not they survived the sinking of the Titanic. \n",
+    "\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1cbff7bd",
+   "metadata": {
+    "papermill": {
+     "duration": 0.001405,
+     "end_time": "2025-01-31T15:53:07.429474",
+     "exception": false,
+     "start_time": "2025-01-31T15:53:07.428069",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "> **Understanding the variables**\n",
+    "\n",
+    "Variables present include:\n",
+    "* survival (survival; 0=no, 1=yes)\n",
+    "* pclass (ticket class; 1=1st, 2=2nd, 3=3rd)\n",
+    "* sex (sex)\n",
+    "* age (age in years)\n",
+    "* sibsp (# of siblings/spouses aboard the Titanic)\n",
+    "* parch (# of parents/children aboard the Titanic)\n",
+    "* ticket (ticket number)\n",
+    "* fare (passenger fare)\n",
+    "* cabin (cabin number)\n",
+    "* embarked (port of embarkation; C = Cherbourg, Q = Queenstown, S = Southampton)\n",
+    "\n",
+    "\n",
+    "Variable notes:\n",
+    "* pclass: A proxy for socio-economic status (SES; 1st=upper, 2nd=middle, 3rd=lower)\n",
+    "* age: Is fractional if less than 1, and if the age is estimated, is it in the form of xx.5\n",
+    "* sibsp: Defines family relations (sibling=brother/sister/stepbrother/stepsister; spouse=husband/wife) (mistresses and fiancés were ignored)\n",
+    "* parch: Defines family relations (parent=mother/father; child=daughter/son/stepdaughter/stepson) (Some children travelled only with a nanny, therefore parch=0 for them)\n",
+    "\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "0b79c659",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2025-01-31T15:53:07.434488Z",
+     "iopub.status.busy": "2025-01-31T15:53:07.434041Z",
+     "iopub.status.idle": "2025-01-31T15:53:08.553887Z",
+     "shell.execute_reply": "2025-01-31T15:53:08.552826Z"
+    },
+    "papermill": {
+     "duration": 1.124692,
+     "end_time": "2025-01-31T15:53:08.555853",
+     "exception": false,
+     "start_time": "2025-01-31T15:53:07.431161",
      "status": "completed"
     },
     "tags": []
    },
    "outputs": [],
-   "source": []
+   "source": [
+    "# import libraries\n",
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "# import dataset\n",
+    "\n",
+    "df = pd.read_csv('/kaggle/input/titanic-passenger-info/test.csv')\n",
+    "\n",
+    "\n",
+    "\n"
+   ]
   }
  ],
  "metadata": {
   "kaggle": {
    "accelerator": "none",
-   "dataSources": [],
+   "dataSources": [
+    {
+     "datasetId": 6575619,
+     "sourceId": 10620158,
+     "sourceType": "datasetVersion"
+    }
+   ],
    "dockerImageVersionId": 30839,
    "isGpuEnabled": false,
    "isInternetEnabled": false,
@@ -86,14 +176,14 @@
   },
   "papermill": {
    "default_parameters": {},
-   "duration": 3.956759,
-   "end_time": "2025-01-30T17:05:19.684717",
+   "duration": 4.551127,
+   "end_time": "2025-01-31T15:53:09.179564",
    "environment_variables": {},
    "exception": null,
    "input_path": "__notebook__.ipynb",
    "output_path": "__notebook__.ipynb",
    "parameters": {},
-   "start_time": "2025-01-30T17:05:15.727958",
+   "start_time": "2025-01-31T15:53:04.628437",
    "version": "2.6.0"
   }
  },
